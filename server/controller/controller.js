@@ -1,12 +1,32 @@
 const express = require('express');
+const {ObjectID} = require('mongodb');
 const router = express.Router();
 
+const {Post} = require('./../models/post');
+
 router.get('/posts', (req, res) => {
-  res.send('Fetching all posts');
+  Post.find().then(posts => {
+    res.send({posts})
+  }).catch(e => {
+    res.status(400).send(e);
+  });
 });
 
 router.get('/posts/:id', (req, res) => {
-  res.send('Fetching the post');
+  const id = req.params.id;
+
+  if(!ObjectID.isValid(id)) {
+    return res.status(400).send();
+  }
+
+
+  Post.findById(id).then(post => {
+    if (!post) {
+      return res.status(404).send();
+    }
+
+    res.send({post});
+  }).catch(e => res.status(400).send(e) );
 });
 
 router.put('/posts', (req, res) => {
