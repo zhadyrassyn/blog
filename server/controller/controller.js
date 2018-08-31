@@ -30,7 +30,16 @@ router.get('/posts/:id', (req, res) => {
 });
 
 router.put('/posts', (req, res) => {
-  res.send('Saving new post');
+  const {title, content, author} = req.body
+  const post = new Post({
+    title,
+    content,
+    author
+  });
+
+  post.save(post).then(doc => {
+    res.status(201).send(doc)
+  }).catch(e => res.status(400));
 });
 
 router.delete('/posts/:id', (req, res) => {

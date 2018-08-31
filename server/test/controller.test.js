@@ -35,3 +35,33 @@ describe('/GET /api/posts', () => {
       .end(done);
   });
 });
+
+describe('/PUT /api/posts', () => {
+  it('should save a post', (done) => {
+    const data = {
+      title: 'Title 3',
+      content: 'Content 3',
+      author: 'Author 3'
+    }
+
+    request(app)
+      .put('/api/posts')
+      .send(data)
+      .expect(201)
+      .expect(({body}) => {
+        expect(body.title).toBe(data.title);
+        expect(body.content).toBe(data.content);
+        expect(typeof body.date).toBe('string');
+      })
+      .end((err, res) => {
+        if (err) {
+          return done(err);
+        }
+
+        Post.find().then(posts => {
+          expect(posts.length).toBe(3);
+          done();
+        }).catch(err => done(err))
+      });
+  })
+});
