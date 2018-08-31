@@ -81,3 +81,27 @@ describe('/PUT /api/posts', () => {
       });
   })
 });
+
+describe('/DELETE /api/posts/:id', () => {
+  it('should delete the post', (done) => {
+    const id = posts[0]._id.toHexString();
+
+    request(app)
+      .delete(`/api/posts/${id}`)
+      .expect(200)
+      .expect(({body}) => {
+        expect(body._id).toBe(id);
+      })
+      .end((err, res) => {
+        if (err) {
+          return done(err);
+        }
+
+        Post.find().then(docs => {
+          expect(docs.length).toBe(1);
+          done();
+        }).catch(err => done(err));
+      });
+  });
+});
+

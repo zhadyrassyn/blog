@@ -19,7 +19,6 @@ router.get('/posts/:id', (req, res) => {
     return res.status(400).send();
   }
 
-
   Post.findById(id).then(post => {
     if (!post) {
       return res.status(404).send();
@@ -43,7 +42,19 @@ router.put('/posts', (req, res) => {
 });
 
 router.delete('/posts/:id', (req, res) => {
-  res.send('Deleting the post');
+  const id = req.params.id;
+
+  if(!ObjectID.isValid(id)) {
+    return res.status(400).send();
+  }
+
+  Post.findByIdAndRemove(id).then(doc => {
+    if (!doc) {
+      return res.status(404).send();
+    }
+
+    res.send(doc);
+  }).catch(err => res.status(404).send());
 });
 
 router.post('/posts/:id', (req, res) => {
