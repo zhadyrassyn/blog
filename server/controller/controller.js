@@ -58,7 +58,25 @@ router.delete('/posts/:id', (req, res) => {
 });
 
 router.post('/posts/:id', (req, res) => {
-  res.send('Updating the post');
+  const id = req.params.id;
+
+  if(!ObjectID.isValid(id)) {
+    return res.status(400).send();
+  }
+
+  const {title, author, content} = req.body
+  const data = {
+    title,
+    author,
+    content
+  }
+
+  Post.findByIdAndUpdate(id, {$set: data}, {new: true}).then(doc => {
+    if (!doc) {
+      return res.status(404).send();
+    }
+    res.send(doc);
+  }).catch(err => res.status(400).send(err));
 });
 
 module.exports = router;

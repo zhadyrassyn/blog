@@ -105,3 +105,25 @@ describe('/DELETE /api/posts/:id', () => {
   });
 });
 
+describe('/POST /api/posts/:id', () => {
+  it('should update the post', (done) => {
+    const id = posts[0]._id.toHexString();
+    const data = {
+      _id: id,
+      author: 'Author 3',
+      content: 'Content 3',
+      title: 'Title 3'
+    }
+
+    request(app)
+      .post(`/api/posts/${id}`)
+      .send(data)
+      .expect(200)
+      .expect(({body}) => {
+        expect(body.author).toBe(data.author);
+        expect(body.content).toBe(data.content);
+        expect(body._id).toBe(data._id);
+      }).end(done);
+  });
+});
+
