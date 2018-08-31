@@ -2,13 +2,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const {mongoose} = require('./db/mongoose');
+const controller = require('./controller/controller');
 
 const app = express();
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-  res.send('Hello, world');
-});
+app.use('/api', controller);
 
 const port = 3000;
 app.listen(port, () => {
