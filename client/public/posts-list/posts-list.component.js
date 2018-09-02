@@ -10,5 +10,5 @@ angular
         })
         .error(err => console.log('error ', err))
     },
-    templateUrl: '/blog-list/blog-list.html'
+    templateUrl: '/posts-list/posts-list.html'
   });
