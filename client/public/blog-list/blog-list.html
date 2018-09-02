@@ -1,0 +1,6 @@
+<ul>
+  <li data-ng-repeat="x in posts">
+    {{x.title}} , {{x.author}}, {{x.date | date: 'yyyy-MM-dd HH:mm'}}
+    <p>{{x.content}}</p>
+  </li>
+</ul>

@@ -2,30 +2,16 @@
 <html data-ng-app="root">
   <head>
   </head>
-  <body data-ng-controller="myCtrl">
+  <body>
 
-    <ul>
-      <li data-ng-repeat="x in posts">
-        {{x.title}} , {{x.author}}, {{x.date | date: 'yyyy-MM-dd HH:mm'}}
-        <p>{{x.content}}</p>
-      </li>
-    </ul>
-    <script type="text/javascript" src="js/vendor/ng.min.js"></script>
+    <blog-list></blog-list>
 
-    <script type="text/javascript">
-      const app = angular.module('root', []);
+    <script type="text/javascript" src="vendor/ng.min.js"></script>
 
-      app.controller('myCtrl', ($scope, $http) => {
-        $scope.posts = [];
+    <script type="text/javascript" src="app.module.js"></script>
+    <script type="text/javascript" src="blog-list/blog-list.module.js"></script>
+    <script type="text/javascript" src="blog-list/blog-list.component.js"></script>
+    <script type="text/javascript" src="services/posts.service.js"></script>
 
-        $http.get('/api/posts')
-          .success(({posts}) => {
-            $scope.posts = posts;
-          })
-          .error(err => {
-            console.log('err ', err);
-          });
-      });
-    </script>
   </body>
 </html>
