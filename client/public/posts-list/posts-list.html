@@ -1,5 +1,32 @@
+<button data-ng-click="vm.showAddModal()">Add</button>
 <ul>
-  <li data-ng-repeat="x in posts">
+  <li data-ng-repeat="x in vm.posts">
     {{x.title}} , {{x.author}}, {{x.date | date: 'yyyy-MM-dd HH:mm'}}, {{x.content}}
+    <button data-ng-click="vm.deletePost(x)">
+      Delete
+    </button>
+    <button>
+      Edit
+    </button>
   </li>
 </ul>
+
+<!-- Add modal -->
+<div data-ng-class="{'display-b-i': vm.showAddModalFlag === true }" class="modal">
+  <div class="modal-content">
+    <span class="close" data-ng-click="vm.removeAddModal()">&times;</span>
+    <div class="modal-header">
+      Добавление нового поста
+    </div>
+    <div class="modal-body">
+      <input type="text" placeholder="Имя автора" data-ng-model="vm.postAuthor">
+      <input type="text" placeholder="Название поста" data-ng-model="vm.postTitle">
+      <textarea placeholder="Содержание поста" data-ng-model="vm.postContent">
+      </textarea>
+    </div>
+    <div class="modal-footer">
+      <button data-ng-click="vm.savePost(vm.postAuthor, vm.postTitle, vm.postContent)">Сохранить</button>
+      <button data-ng-click="vm.removeAddModal()">Отмена</button>
+    </div>
+  </div>
+</div>

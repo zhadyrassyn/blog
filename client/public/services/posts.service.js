@@ -7,7 +7,16 @@ postsService.factory('postsService', ($http) => {
     },
 
     deletePost: (id) => {
-      return $http.delete(`/api/posts${id}`)
+      return $http.delete(`/api/posts/${id}`)
+    },
+
+    savePost: (post) => {
+      return $http.put('/api/posts', post, {
+        headers: {
+          'content-type': 'application/json',
+          'accept': 'application/json'
+        }
+      });
     }
   }
 });
