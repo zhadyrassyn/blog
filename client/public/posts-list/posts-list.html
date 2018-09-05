@@ -5,9 +5,30 @@
     <button data-ng-click="vm.deletePost(x)">
       Delete
     </button>
-    <button>
+    <button data-ng-click="vm.showEditModal(x)">
       Edit
     </button>
+
+    <!-- Edit modal -->
+    <div data-ng-class="{'display-b-i': vm.showEditModalFlag === true }" class="modal">
+      <div class="modal-content">
+        <span class="close" data-ng-click="vm.removeEditModal()">&times;</span>
+        <div class="modal-header">
+          Рекдактирование поста {{x.title}}
+        </div>
+        <div class="modal-body">
+          <input type="text" placeholder="Имя автора" data-ng-model="vm.editAuthor">
+          <input type="text" placeholder="Название поста" data-ng-model="vm.editTitle">
+          <textarea placeholder="Содержание поста" data-ng-model="vm.editContent">
+      </textarea>
+        </div>
+        <div class="modal-footer">
+          <button data-ng-click="vm.updatePost(vm.editAuthor, vm.editTitle, vm.editContent, vm.editId)">Редактировать</button>
+          <button data-ng-click="vm.removeEditModal()">Отмена</button>
+        </div>
+      </div>
+    </div>
+
   </li>
 </ul>
 

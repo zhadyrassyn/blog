@@ -17,6 +17,15 @@ postsService.factory('postsService', ($http) => {
           'accept': 'application/json'
         }
       });
+    },
+
+    updatePost: (id, post) => {
+      return $http.post(`/api/posts/${id}`, post, {
+        headers: {
+          'content-type': 'application/json',
+          'accept': 'application/json'
+        }
+      });
     }
   }
 });
