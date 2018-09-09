@@ -10,10 +10,10 @@ postsService.factory('postsService', ($http) => {
       return $http.delete(`/api/posts/${id}`)
     },
 
-    savePost: (post) => {
-      return $http.put('/api/posts', post, {
+    savePost: (formData) => {
+      return $http.put('/api/posts', formData, {
         headers: {
-          'content-type': 'application/json',
+          'Content-type': undefined,
           'accept': 'application/json'
         }
       });

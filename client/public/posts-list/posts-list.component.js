@@ -35,14 +35,14 @@ angular
         vm.postContent = "";
       }
 
-      vm.savePost = (author, title, content) => {
-        const post = {
-          author,
-          title,
-          content
-        }
+      vm.savePost = (author, title, content, image) => {
+        const formData = new FormData();
+        formData.append('author', author);
+        formData.append('title', title);
+        formData.append('content', content);
+        formData.append('file', image);
 
-        postsService.savePost(post)
+        postsService.savePost(formData)
           .success(post => {
             vm.removeAddModal();
             vm.posts.push(post);

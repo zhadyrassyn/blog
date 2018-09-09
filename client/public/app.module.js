@@ -1,1 +1,1 @@
-angular.module('root', ['blogList']);
+const app = angular.module('root', ['blogList']);

@@ -45,9 +45,10 @@
       <input type="text" placeholder="Название поста" data-ng-model="vm.postTitle">
       <textarea placeholder="Содержание поста" data-ng-model="vm.postContent">
       </textarea>
+      <input type="file" ng-file-model="vm.imageFile">
     </div>
     <div class="modal-footer">
-      <button data-ng-click="vm.savePost(vm.postAuthor, vm.postTitle, vm.postContent)">Сохранить</button>
+      <button data-ng-click="vm.savePost(vm.postAuthor, vm.postTitle, vm.postContent, vm.imageFile)">Сохранить</button>
       <button data-ng-click="vm.removeAddModal()">Отмена</button>
     </div>
   </div>
