@@ -1,8 +1,40 @@
 const express = require('express');
 const {ObjectID} = require('mongodb');
+const multer = require('multer');
+const upload = multer({dest: 'server/uploads/' });
+const base64Img = require('base64-img');
+
 const router = express.Router();
 
 const {Post} = require('./../models/post');
+
+router.put('/posts', upload.single('file'), (req, res) => {
+  const {title, content, author} = req.body
+  const post = new Post({
+    title,
+    content,
+    author
+  });
+
+  if (req.file) {
+    base64Img.base64(req.file.path, (err, data) => {
+      if (!err) {
+        post.image = data;
+        save(post, res);
+      } else {
+        console.error('error ', err);
+      }
+    });
+  } else {
+    save(post, res);
+  }
+});
+
+const save = (post, res) => {
+  post.save(post).then(doc => {
+    res.status(201).send(doc)
+  }).catch(e => res.status(400));
+}
 
 router.get('/posts', (req, res) => {
   Post.find().then(posts => {
@@ -26,19 +58,6 @@ router.get('/posts/:id', (req, res) => {
 
     res.send({post});
   }).catch(e => res.status(400).send(e) );
-});
-
-router.put('/posts', (req, res) => {
-  const {title, content, author} = req.body
-  const post = new Post({
-    title,
-    content,
-    author
-  });
-
-  post.save(post).then(doc => {
-    res.status(201).send(doc)
-  }).catch(e => res.status(400));
 });
 
 router.delete('/posts/:id', (req, res) => {

@@ -2,6 +2,7 @@
 <ul>
   <li data-ng-repeat="x in vm.posts">
     {{x.title}} , {{x.author}}, {{x.date | date: 'yyyy-MM-dd HH:mm'}}, {{x.content}}
+    <img data-ng-src="{{x.image}}">
     <button data-ng-click="vm.deletePost(x)">
       Delete
     </button>
