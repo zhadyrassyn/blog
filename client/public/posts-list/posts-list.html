@@ -9,6 +9,7 @@
     <button data-ng-click="vm.showEditModal(x)">
       Edit
     </button>
+    <button ui-sref="detail({ postID: x._id })">More</button>
 
     <!-- Edit modal -->
     <div data-ng-class="{'display-b-i': vm.showEditModalFlag === true }" class="modal">

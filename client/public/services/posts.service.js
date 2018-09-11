@@ -19,6 +19,10 @@ postsService.factory('postsService', ($http) => {
       });
     },
 
+    getPost: (id) => {
+      return $http.get(`/api/posts/${id}`);
+    },
+
     updatePost: (id, post) => {
       return $http.post(`/api/posts/${id}`, post, {
         headers: {

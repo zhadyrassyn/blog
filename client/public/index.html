@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html data-ng-app="root">
   <head>
+    <base href="/">
     <link type="text/css" rel="stylesheet" href="css/index.css">
   </head>
   <body>
+    Navigation
 
-    <blog-list></blog-list>
+    <a ui-sref="somelink">Or connect using a social account.</a>
+
+    <ui-view></ui-view>
+
 
     <script type="text/javascript" src="vendor/ng.min.js"></script>
+    <!--<script type="text/javascript" src="vendor/ng-route.min.js"></script>-->
+    <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
 
     <script type="text/javascript" src="app.module.js"></script>
     <script type="text/javascript" src="vendor/ng-file-model.js"></script>
     <script type="text/javascript" src="posts-list/posts-list.module.js"></script>
     <script type="text/javascript" src="posts-list/posts-list.component.js"></script>
+
+    <script type="text/javascript" src="post-detail/post-detail.module.js"></script>
+    <script type="text/javascript" src="post-detail/post-detail-component.js"></script>
     <script type="text/javascript" src="services/posts.service.js"></script>
 
   </body>

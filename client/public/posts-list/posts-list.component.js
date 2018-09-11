@@ -1,8 +1,8 @@
 angular
   .module('blogList')
-  .component('blogList', {
+  .component('blogListComponent', {
     controllerAs: 'vm',
-    controller: ($scope, postsService) => {
+    controller: ($scope, postsService, $state) => {
       const vm = $scope.vm;
       vm.showAddModalFlag = false;
       vm.showEditModalFlag = false;
@@ -77,6 +77,11 @@ angular
           .error(err => console.log('error ', err));
 
         vm.removeEditModal();
+      }
+
+      vm.detailPage = () => {
+        console.log('true');
+        // $state.go('detail')
       }
     },
     templateUrl: '/posts-list/posts-list.html'
