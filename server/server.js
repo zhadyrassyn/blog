@@ -4,6 +4,7 @@ const path = require('path');
 
 const {mongoose} = require('./db/mongoose');
 const controller = require('./controller/controller');
+const User = require('./models/user');
 
 const app = express();
 app.use(bodyParser.json());
