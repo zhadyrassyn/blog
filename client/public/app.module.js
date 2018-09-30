@@ -1,6 +1,6 @@
 const app = angular.module('root', ['blogList', 'postDetail', 'ui.router']);
 
-app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+app.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
   $locationProvider.html5Mode(true);
 
   const states = [{
@@ -13,6 +13,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     component: 'postDetailComponent'
   }];
 
+  /* eslint arrow-parens:0 */
   states.forEach(state => $stateProvider.state(state));
 
   // For any unmatched url, redirect to /state1

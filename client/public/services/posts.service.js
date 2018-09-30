@@ -15,7 +15,7 @@ postsService.factory('postsService', ($http) => {
         headers: {
           'Content-type': undefined,
           'accept': 'application/json'
-        }
+        },
       });
     },
 
@@ -28,8 +28,8 @@ postsService.factory('postsService', ($http) => {
         headers: {
           'content-type': 'application/json',
           'accept': 'application/json'
-        }
+        },
       });
-    }
-  }
+    },
+  };
 });

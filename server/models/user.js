@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+/*eslint null:0*/
+const mongoose = require('mongoose'); //eslint-disable-line null
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
 
