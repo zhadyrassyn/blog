@@ -1,4 +1,4 @@
-const app = angular.module('root', ['blogList', 'postDetail', 'ui.router']);
+const app = angular.module('root', ['blogList', 'postDetail', 'ui.router', 'navigation', 'login', 'ngCookies']);
 
 app.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
   $locationProvider.html5Mode(true);
@@ -11,6 +11,10 @@ app.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
     name: 'detail',
     url: '/detail/{postID}',
     component: 'postDetailComponent'
+  }, {
+    name: 'login',
+    url: '/login',
+    component: 'loginComponent'
   }];
 
   /* eslint arrow-parens:0 */

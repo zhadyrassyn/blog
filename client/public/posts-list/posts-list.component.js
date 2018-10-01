@@ -2,11 +2,13 @@ angular
   .module('blogList')
   .component('blogListComponent', {
     controllerAs: 'vm',
-    controller: ($scope, postsService, $state) => {
+    controller: ($scope, postsService, $state, $cookies) => {
       const vm = $scope.vm;
       vm.showAddModalFlag = false;
       vm.showEditModalFlag = false;
       vm.posts = [];
+
+      console.log($cookies.get("connect.sid"));
 
       postsService.getPosts()
         .success(({posts}) => {

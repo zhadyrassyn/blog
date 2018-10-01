@@ -67,7 +67,8 @@ app.use(passport.session());
 app.use('/api', controller);
 
 app.post('/api/login', passport.authenticate('local'), (req, res, next) => {
-  console.log('req ', req.user);
+  res.cookie('session', JSON.stringify(req.user))
+  res.send(req.user)
 });
 
 app.get('/api/users', (req, res, next) => {
