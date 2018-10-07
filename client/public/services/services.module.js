@@ -1,0 +1,1 @@
+const servicesModule = angular.module('servicesModule', []);

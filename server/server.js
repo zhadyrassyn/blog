@@ -18,6 +18,7 @@ app.use(session({
   secret: 'secret',
   saveUninitialized: false,
   store: new MongoStore({mongooseConnection: mongoose.connection}),
+  name: 'sessionID'
 }));
 
 
@@ -90,7 +91,8 @@ app.post('/api/signup', (req, res, next) => {
           return next(err);
         }
       });
-      res.status(200).send();
+      res.cookie('session', JSON.stringify(req.user))
+      res.status(200).send(req.user);
     }
   }).catch((error) => console.log('error', error));
 });

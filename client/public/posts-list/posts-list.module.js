@@ -1,1 +1,1 @@
-angular.module('blogList', ['postsServiceModule']);
+angular.module('blogList', ['servicesModule']);

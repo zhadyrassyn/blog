@@ -1,10 +1,16 @@
 <nav>
     <ul>
         <li>
+          <button type="button" ui-sref="index">Главная</button>
+        </li>
+        <li data-ng-if="!$root.session">
             <button type="button" ui-sref="login">Login</button>
         </li>
-        <li>
-            <button type="button">Register</button>
+        <li data-ng-if="!$root.session">
+            <button type="button" ui-sref="register">Register</button>
+        </li>
+        <li data-ng-if="$root.session">
+            <button type="button" data-ng-click="vm.logout()">Log out</button>
         </li>
     </ul>
 </nav>

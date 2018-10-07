@@ -64,3 +64,16 @@
   display: block;
   margin: 10px;
 }
+
+.registration-form > input,
+.registration-form > button {
+  display: block;
+  margin-top: 20px;
+  padding-left: 10px;
+  height: 30px;
+  width: 200px;
+}
+
+.text-danger {
+  color: red;
+}

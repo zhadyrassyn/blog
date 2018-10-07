@@ -1,0 +1,9 @@
+<section class="section-registration">
+  <form class="registration-form">
+    <input type="email" placeholder="Enter email" data-ng-model="vm.email">
+    <input type="password" placeholder="Enter password" data-ng-model="vm.password">
+    <input type="password" placeholder="Enter password again" data-ng-model="vm.passwordAgain">
+    <span class="text-danger" data-ng-model="vm.flashError">{{vm.flashError}}</span>
+    <button type="button" data-ng-click="vm.register(vm.email, vm.password, vm.passwordAgain)">Сохранить</button>
+  </form>
+</section>

@@ -37,6 +37,7 @@ const save = (post, res) => {
 };
 
 router.get('/posts', (req, res) => {
+  console.log(req.isAuthenticated());
   Post.find().then((posts) => {
     res.send({posts});
   }).catch((e) => {
