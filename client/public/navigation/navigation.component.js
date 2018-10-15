@@ -18,7 +18,6 @@ angular
         loginService.logout()
           .then(response => {
             console.log('response ', response);
-            $cookies.remove("session");
             $rootScope.session = undefined;
           })
           .catch(error => {

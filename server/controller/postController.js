@@ -8,7 +8,7 @@ const router = express.Router(); // eslint-disable-line new-cap
 
 const {Post} = require('./../models/post');
 
-router.put('/posts', upload.single('file'), (req, res) => {
+router.put('/', upload.single('file'), (req, res) => {
   const {title, content, author} = req.body;
   const post = new Post({
     title,
@@ -36,7 +36,7 @@ const save = (post, res) => {
   }).catch((e) => res.status(400));
 };
 
-router.get('/posts', (req, res) => {
+router.get('/', (req, res) => {
   console.log(req.isAuthenticated());
   Post.find().then((posts) => {
     res.send({posts});
@@ -45,7 +45,7 @@ router.get('/posts', (req, res) => {
   });
 });
 
-router.get('/posts/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   const id = req.params.id;
 
   if (!ObjectID.isValid(id)) {
@@ -61,7 +61,7 @@ router.get('/posts/:id', (req, res) => {
   }).catch((e) => res.status(400).send(e));
 });
 
-router.delete('/posts/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   const id = req.params.id;
 
   if (!ObjectID.isValid(id)) {
@@ -77,7 +77,7 @@ router.delete('/posts/:id', (req, res) => {
   }).catch((err) => res.status(404).send());
 });
 
-router.post('/posts/:id', (req, res) => {
+router.post('/:id', (req, res) => {
   const id = req.params.id;
 
   if (!ObjectID.isValid(id)) {
