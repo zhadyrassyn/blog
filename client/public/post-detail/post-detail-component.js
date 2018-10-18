@@ -2,8 +2,8 @@ angular
   .module('postDetail')
   .component('postDetailComponent', {
     controllerAs: 'vm',
-    controller: ($scope, postsService, $state) => {
-      const vm = $scope.vm;
+    controller: function(postsService, $state) {
+      const vm = this;
       const id = $state.params.postID;
 
       postsService.getPost(id)

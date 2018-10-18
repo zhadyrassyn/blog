@@ -2,8 +2,8 @@ angular
   .module('registrationModule')
   .component('registrationComponent', {
     controllerAs: 'vm',
-    controller: function ($scope, loginService, $cookies, $rootScope, $state) {
-      const vm = $scope.vm;
+    controller: function (loginService, $cookies, $rootScope, $state) {
+      const vm = this;
       // console.log($cookies.getAll());
       vm.register = function(email, password, passwordAgain) {
         console.log(email, password, passwordAgain);

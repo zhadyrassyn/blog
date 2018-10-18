@@ -2,8 +2,8 @@ angular
   .module('navigation')
   .component('navigationComponent', {
     controllerAs: 'vm',
-    controller: function($scope, $cookies, loginService, sessionService, $rootScope) {
-      const vm = $scope.vm;
+    controller: function($cookies, loginService, sessionService, $rootScope) {
+      const vm = this;
 
       // $rootScope.$on('n', function(event, data) {
       //   vm.session = data;

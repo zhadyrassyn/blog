@@ -2,8 +2,8 @@ angular
   .module('login')
   .component('loginComponent', {
     controllerAs: 'vm',
-    controller: function($scope, $http, $state, $cookies, loginService, sessionService, $rootScope) {
-      var vm = $scope.vm;
+    controller: function($http, $state, $cookies, loginService, sessionService, $rootScope) {
+      var vm = this;
 
       vm.login = function(email, password) {
         loginService.login(email, password)

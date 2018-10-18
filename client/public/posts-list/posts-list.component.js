@@ -2,8 +2,8 @@ angular
   .module('blogList')
   .component('blogListComponent', {
     controllerAs: 'vm',
-    controller: ($scope, postsService, $state, $cookies) => {
-      const vm = $scope.vm;
+    controller: function(postsService, $state, $cookies) {
+      const vm = this;
       vm.showAddModalFlag = false;
       vm.showEditModalFlag = false;
       vm.posts = [];
