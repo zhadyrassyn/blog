@@ -12,7 +12,13 @@ const Post = mongoose.model('Post', {
   author: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user'
-  }
+  },
+  comments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Comment'
+    }
+  ]
 });
 
 module.exports = {Post};
