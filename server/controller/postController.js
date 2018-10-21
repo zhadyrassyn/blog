@@ -38,7 +38,7 @@ const save = (post, res) => {
 
 router.get('/', (req, res) => {
   console.log(req.isAuthenticated());
-  Post.find().then((posts) => {
+  Post.find().populate('author').then((posts) => {
     res.send({posts});
   }).catch((e) => {
     res.status(400).send(e);

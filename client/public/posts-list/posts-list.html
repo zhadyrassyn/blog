@@ -1,7 +1,7 @@
 Feed
 <ul>
   <li data-ng-repeat="x in vm.posts">
-    {{x.title}} , {{x.author}}, {{x.date | date: 'yyyy-MM-dd HH:mm'}}, {{x.content}}
+    {{x.title}} , {{x.author.email}}, {{x.date | date: 'yyyy-MM-dd HH:mm'}}, {{x.content}}
     <img data-ng-src="{{x.image}}">
 
     <button ui-sref="detail({ postID: x._id })">More</button>
