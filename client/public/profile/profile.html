@@ -3,9 +3,35 @@ Profile page
 <ul>
   <li ng-repeat="post in vm.posts">
 
-    {{post.title}} , {{post.author}}, {{post.date | date: 'yyyy-MM-dd HH:mm'}}, {{post.content}}
+    {{post.title}} , {{post.date | date: 'yyyy-MM-dd HH:mm'}}, {{post.content}}
     <br>
     <img data-ng-src="{{post.image}}">
+    <button data-ng-click="vm.deletePost(post)">
+    Delete
+    </button>
+    <button data-ng-click="vm.showEditModal(post)">
+    Edit
+    </button>
+    <button ui-sref="detail({ postID: post._id })">More</button>
+
+    <!-- Edit modal -->
+    <div data-ng-class="{'display-b-i': vm.showEditModalFlag === true }" class="modal">
+      <div class="modal-content">
+        <span class="close" data-ng-click="vm.removeEditModal()">&times;</span>
+        <div class="modal-header">
+          Рекдактирование поста {{post.title}}
+        </div>
+        <div class="modal-body">
+          <input type="text" placeholder="Название поста" data-ng-model="vm.editTitle">
+          <textarea placeholder="Содержание поста" data-ng-model="vm.editContent">
+      </textarea>
+        </div>
+        <div class="modal-footer">
+          <button data-ng-click="vm.updatePost(vm.editTitle, vm.editContent, vm.editId)">Редактировать</button>
+          <button data-ng-click="vm.removeEditModal()">Отмена</button>
+        </div>
+      </div>
+    </div>
   </li>
 </ul>
 

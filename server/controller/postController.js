@@ -84,10 +84,9 @@ router.post('/:id', (req, res) => {
     return res.status(400).send();
   }
 
-  const {title, author, content} = req.body;
+  const {title, content} = req.body;
   const data = {
     title,
-    author,
     content,
   };
 
