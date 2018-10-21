@@ -2,6 +2,7 @@ const express = require('express');
 
 const authController = require('./authController');
 const postController = require('./postController');
+const userPostsController = require('./userPostsController');
 
 const router = express.Router();
 
@@ -13,6 +14,7 @@ router.get('/protected', (req, res, next) => {
 
 router.use('/auth', authController);
 router.use('/posts', postController);
+router.use('/users', userPostsController);
 
 module.exports = router;
 

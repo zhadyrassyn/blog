@@ -77,3 +77,9 @@
 .text-danger {
   color: red;
 }
+
+img {
+  width: 300px;
+  height: auto;
+  /*border-radius: 50%;*/
+}

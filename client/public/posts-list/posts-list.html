@@ -1,14 +1,14 @@
-<button data-ng-click="vm.showAddModal()">Add</button>
+Feed
 <ul>
   <li data-ng-repeat="x in vm.posts">
     {{x.title}} , {{x.author}}, {{x.date | date: 'yyyy-MM-dd HH:mm'}}, {{x.content}}
     <img data-ng-src="{{x.image}}">
-    <button data-ng-click="vm.deletePost(x)">
-      Delete
-    </button>
-    <button data-ng-click="vm.showEditModal(x)">
-      Edit
-    </button>
+    <!--<button data-ng-click="vm.deletePost(x)">-->
+      <!--Delete-->
+    <!--</button>-->
+    <!--<button data-ng-click="vm.showEditModal(x)">-->
+      <!--Edit-->
+    <!--</button>-->
     <button ui-sref="detail({ postID: x._id })">More</button>
 
     <!-- Edit modal -->
@@ -30,6 +30,8 @@
         </div>
       </div>
     </div>
+
+    <hr>
 
   </li>
 </ul>
